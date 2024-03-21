@@ -34,5 +34,23 @@ export const insertProduct = (data, result) => {
 };
 
 export const updateProductById = (data, id, result) =>{
-  db.query
+  db.query('UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?', [data.product_name, data.product_price, id], (err, results) =>{
+    if(err){
+      console.error(err);
+      result(err, null);
+    }else{
+      result(null, results);
+    }
+  });
+}
+
+export const deleteProductById = (id, result) =>{
+  db.query('DELETE FROM product WHERE product_id = ?' , [id], (err,results) =>{
+    if(err){
+      console.error(err);
+      result(err, null);
+    }else{
+      result(null, results);
+    }
+  });
 }
