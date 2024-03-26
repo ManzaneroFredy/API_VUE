@@ -1,4 +1,4 @@
-import db from '../config/database';
+import db from '../config/database.js';
 
 export const getProducts = (result) => {
   db.query("SELECT * FROM product", (err, results) =>{
@@ -23,7 +23,7 @@ export const getProductsById = (id, result) =>{
 };
 
 export const insertProduct = (data, result) => {
-  db.query("INSERT INTO products SET ?", [data], (err, results) =>{
+  db.query("INSERT INTO product SET ?", [data], (err, results) =>{
     if(err){
       console.error(err);
       result(err, null);

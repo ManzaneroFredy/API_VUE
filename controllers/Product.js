@@ -1,4 +1,4 @@
-import { getProducts, getProductsById, insertProduct, updateProductById, deleteProductById } from "../models/productModel";
+import { getProducts, getProductsById, insertProduct, updateProductById, deleteProductById } from "../models/productModel.js";
 
 export const showProduct = (req, res) =>{
   getProducts((err, results) => {
@@ -45,7 +45,7 @@ export const updateProduct = (req,res) =>{
 
 export const deleteProduct = (req,res) =>{
   const id = req.params.id;
-  deleteProduct(id, (err, results) =>{
+  deleteProductById(id, (err, results) =>{
     if(err){
       res.send(err);
     }else{
